@@ -90,9 +90,7 @@ namespace lab_masstransit
                                 });
 
                                 var uri = new Uri(string.Concat(busControl.Address.AbsoluteUri, "/", queueOpt.Value()));
-                                logger.LogInformation($"Publishing to Message Bus at {uri}");
 
-                                logger.LogInformation("Sending ... to Message Bus");
                                 try
                                 {
                                     await busControl.StartAsync();
@@ -110,7 +108,6 @@ namespace lab_masstransit
                                     await busControl.StopAsync();
                                 }
 
-                                logger.LogInformation("Finnished publishing to Message Bus");
                                 return 0;
                             });
                         });
@@ -126,8 +123,6 @@ namespace lab_masstransit
 
                             subcmd.OnExecute(async () =>
                             {
-                                logger.LogInformation("Subscribing to Message Bus");
-
                                 var busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>
                                 {
                                     cfg.SetLoggerFactory(loggerFactory);
