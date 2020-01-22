@@ -89,7 +89,7 @@ namespace lab_masstransit
 
                                 });
 
-                                var uri = new Uri(string.Concat(busControl.Address.AbsoluteUri, "/", queueOpt.Value()));
+                                var uri = new Uri($"rabbitmq://{hostOpt.Value()}:{portOpt.Value()}/{vhostOpt.Value()}/{queueOpt.Value()}");
 
                                 try
                                 {

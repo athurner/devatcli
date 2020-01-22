@@ -3,11 +3,11 @@ using MassTransit;
 
 namespace lab_masstransit
 {
-    internal class LabMessageConsumer : IConsumer<LabMessage>
+    internal class LabMessageConsumer : IConsumer<ILabMessage>
     {
-        public Task Consume(ConsumeContext<LabMessage> context)
+        public Task Consume(ConsumeContext<ILabMessage> context)
         {
-            var msg = context.Message;
+            ILabMessage msg = context.Message;
 
             System.Console.WriteLine($"Received Message: {msg.Information} (authored: {msg.DateTime})");
 

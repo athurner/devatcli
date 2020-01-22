@@ -1,7 +1,7 @@
 ﻿using System;
 namespace lab_masstransit
 {
-    public class LabMessage
+    public class LabMessage : ILabMessage
     {
         public LabMessage()
         {
