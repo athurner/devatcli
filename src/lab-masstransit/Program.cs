@@ -32,11 +32,6 @@ namespace lab_masstransit
                     return $"Version {versionInfo}";
                 });
 
-            //var serviceCollection = new ServiceCollection();
-            //ConfigureServices(serviceCollection);
-            //var serviceProvider = serviceCollection.BuildServiceProvider();
-            //var logger = serviceProvider.GetService<ILogger<Program>>();
-
             var loggerFactory = LoggerFactory.Create(builder =>
             {
                 builder.SetMinimumLevel(LogLevel.Debug);
@@ -170,9 +165,5 @@ namespace lab_masstransit
 
             return app.Execute(args);
         }
-
-        //private static void ConfigureServices(IServiceCollection services)
-        //{
-        //}
     }
 }
