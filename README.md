@@ -24,8 +24,10 @@ dotnet devatcli.dll efsql -s ussql060.bethel.jw.org -d Northwind -u <user> -pw <
 ## Build And Publish the Docker Image
 
 ``` sh
-cd src
-docker build devatcli -t athurner/devatcli:latest -t athurner/devatcli:1.0.0
-docker push athurner/devatcli:latest
-docker push athurner/devatcli:1.0.0
+cd src && \
+docker build devatcli -t athurner/devatcli:latest -t athurner/devatcli:1.0.0 && \
+docker push athurner/devatcli:latest && \
+docker push athurner/devatcli:1.0.0 && \
+kubectl delete -f ../kube/deployment.yml && \
+kubectl apply -f ../kube/deployment.yml
 ```
