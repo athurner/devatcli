@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using MassTransit;
 
-namespace lab_masstransit
+namespace devatcli
 {
     internal class LabMessageConsumer : IConsumer<ILabMessage>
     {

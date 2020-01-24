@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace lab_masstransit
+namespace devatcli
 {
     public interface ILabMessage
     {

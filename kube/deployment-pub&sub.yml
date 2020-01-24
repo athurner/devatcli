@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devatcli-publisher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devatcli
+  template:
+    metadata:
+      labels:
+        app: devatcli
+        version: "1.0"
+    spec:
+      containers:
+      - name: devatcli
+        image: athurner/devatcli:latest
+        command:
+          - /bin/sh
+          - "-c"
+          - "sleep 24h"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devatcli-subscriber
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devatcli
+  template:
+    metadata:
+      labels:
+        app: devatcli
+        version: "1.0"
+    spec:
+      containers:
+      - name: devatcli
+        image: athurner/devatcli:latest
+        command:
+          - /bin/sh
+          - "-c"
+          - "sleep 24h"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

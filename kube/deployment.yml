@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lab-masstransit-publisher
+  name: devatcli
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: lab-masstransit
+      app: devatcli
   template:
     metadata:
       labels:
-        app: lab-masstransit
+        app: devatcli
         version: "1.0"
     spec:
       containers:
-      - name: lab-masstransit
-        image: athurner/lab-masstransit:latest
+      - name: devatcli
+        image: athurner/devatcli:latest
         command:
           - /bin/sh
           - "-c"
@@ -24,30 +24,4 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: lab-masstransit-subscriber
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: lab-masstransit
-  template:
-    metadata:
-      labels:
-        app: lab-masstransit
-        version: "1.0"
-    spec:
-      containers:
-      - name: lab-masstransit
-        image: athurner/lab-masstransit:latest
-        command:
-          - /bin/sh
-          - "-c"
-          - "sleep 24h"
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+

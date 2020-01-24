@@ -6,19 +6,19 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
 
-namespace lab_masstransit
+namespace devatcli
 {
     class Program
     {
         private static int Main(string[] args)
         {
-            var appName = "LAB MassTransit CLI";
-            var versionInfo = $"1.0.5";
+            var appName = "DevAT Swiss-Army-Knife CLI ";
+            var versionInfo = $"1.0.0";
 
             var app = new CommandLineApplication(false)
             {
                 Name = appName,
-                Description = "The command line interface for testing MasTransit"
+                Description = "The swiss army knife for development and testing"
             };
 
             app.HelpOption("-?|-h|--help");

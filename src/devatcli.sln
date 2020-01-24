@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab-masstransit", "lab-masstransit\lab-masstransit.csproj", "{92E1E4D1-1D7D-4BF2-A00F-07E0B71A101B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "devatcli", "devatcli\devatcli.csproj", "{92E1E4D1-1D7D-4BF2-A00F-07E0B71A101B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

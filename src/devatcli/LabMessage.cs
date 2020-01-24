@@ -1,5 +1,5 @@
 ﻿using System;
-namespace lab_masstransit
+namespace devatcli
 {
     public class LabMessage : ILabMessage
     {

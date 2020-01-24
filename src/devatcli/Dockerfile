@@ -6,13 +6,13 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY . .
-RUN dotnet restore "lab-masstransit.csproj"
+RUN dotnet restore "devatcli.csproj"
 COPY . .
 WORKDIR /src
-RUN dotnet build "lab-masstransit.csproj" -c Release -o /app/build
+RUN dotnet build "devatcli.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "lab-masstransit.csproj" -c Release -o /app/publish
+RUN dotnet publish "devatcli.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

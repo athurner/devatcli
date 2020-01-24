@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using McMaster.Extensions.CommandLineUtils;
 using McMaster.Extensions.CommandLineUtils.Validation;
 
-namespace lab_masstransit
+namespace devatcli
 {
     internal class UshortValidator : IOptionValidator
     {
