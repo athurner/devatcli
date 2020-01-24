@@ -2,9 +2,12 @@
 using System.Threading.Tasks;
 using MassTransit;
 using McMaster.Extensions.CommandLineUtils;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using devatcli.DataModel;
 
 namespace devatcli
 {
@@ -46,6 +49,40 @@ namespace devatcli
             var logger = loggerFactory.CreateLogger<Program>();
 
             logger.LogInformation($"{appName} - {versionInfo}");
+
+            app.Command(
+                "efsql",
+                (cmd) =>
+                {                    
+                    cmd.Description = "using Entity Framework to access SQL Server";
+                    cmd.HelpOption("-?|-h|--help");
+
+                    var hostOpt = cmd.Option("-s|--server", "The server name.", CommandOptionType.SingleValue);
+                    var dbOpt = cmd.Option("-d|--database", "The database.", CommandOptionType.SingleValue);
+                    var userOpt = cmd.Option("-u|--user", "The user.", CommandOptionType.SingleValue);
+                    var passwordOpt = cmd.Option("-pw|--password", "The password.", CommandOptionType.SingleValue);
+                    //var querOpt = cmd.Option("-q|--query", "The tsql quey", CommandOptionType.SingleValue);
+                    
+                    cmd.OnExecute(async () =>
+                        {
+                            var connectionString = $"SERVER={hostOpt.Value()};Database={dbOpt.Value()};User={userOpt.Value()};Password={passwordOpt.Value()}";
+
+                            var options = new DbContextOptionsBuilder<NorthwindContext>()
+                                    .UseSqlServer(connectionString)
+                                    .UseLoggerFactory(loggerFactory) 
+                                    .Options;
+                            using (var db = new NorthwindContext(options))
+                            {
+                                var products = await db.Products
+                                                        .ToListAsync();
+
+                                foreach(var p in products)
+                                {
+                                    logger.LogInformation(p.ProductName);
+                                }
+                            }
+                        });
+                });
 
             app.Command(
                 "rabbitmq",

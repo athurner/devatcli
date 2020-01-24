@@ -11,7 +11,14 @@ dotnet devatcli.dll rabbitmq -s rabbitmq-0.rabbitmq-headless.rabbitmq.svc.cluste
 
 dotnet devatcli.dll rabbitmq -s rabbitmq-0.rabbitmq-headless.rabbitmq.svc.cluster.local -p 5672 -v lab -u <user> -pw <password> publish -q labMessageBus -m Hello
 
+```
 
+## ef-sql
+
+Example for accessing SQL Server (Northwind DB)
+
+``` sh
+dotnet devatcli.dll efsql -s ussql060.bethel.jw.org -d Northwind -u <user> -pw <password>
 ```
 
 ## Build And Publish the Docker Image
